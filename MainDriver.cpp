@@ -7,6 +7,14 @@
 
 using namespace std;
 
+/*
+    TWEAKS/BUGS
+    Currently only handles ints, should be able to handle any type
+    this will be created in main driver
+    Output reverses elements, but also adds first item last, as a traditional stack
+    this should display exactly like the output but in the reverse order
+*/
+
 int main(){
     //reading and outputing files
     //ifstream inputFile;
