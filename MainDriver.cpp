@@ -45,7 +45,6 @@ int main(){
         cout << "Error: Could not open output file " << outFilename << endl;
         return 1;
     }
-
     ReverseContent(inputFile, outputFile);
     /*cout << "Starting with empty stack, expected result is true(1): ";
     checkStack = stack1.IsEmpty();

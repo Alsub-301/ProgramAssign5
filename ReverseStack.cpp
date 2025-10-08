@@ -10,21 +10,31 @@ using namespace std;
 bool ReverseContent(ifstream& inputFile, ofstream& outputFile){
     Stack<char> stk;
     char ch;
+    char top;
 
     if (!inputFile.good() || !outputFile.good()) return false;
     //open input file
     while (inputFile.get(ch)){
+        if (ch == '\n'){
+            while (!stk.IsEmpty()){
+                top = stk.Top();
+                outputFile.put(top);
+                stk.Pop();
+            }
+            outputFile.put('\n');
+            continue;
+        }
+        if (isspace(ch)){
+            continue;
+        }
         stk.Push(ch);
     }
-
-    while(!stk.IsEmpty()){
-        char top = stk.Top();
+    while (!stk.IsEmpty()){
+        top = stk.Top();
         outputFile.put(top);
         stk.Pop();
-        if (!outputFile){
-            cout << "Could not write into file\n";
-            return false;
-        }
     }
+        
+    
     return true;
 }
