@@ -21,7 +21,6 @@ class Stack{
         Item Top(); //done
         bool IsEmpty(); //done
         int Size(); //done
-        void PrintStack(); //done
     private:
         std::vector<Item> stack;
         
@@ -55,13 +54,4 @@ bool Stack<Item>::IsEmpty(){
 template<typename Item>
 int Stack<Item>::Size(){
     return stack.size();
-}
-
-//function to print out stack
-template<typename Item>
-void Stack<Item>::PrintStack(){
-    for (Item elements : stack){
-        std::cout << elements << " ";
-    }
-    std::cout << "\n";
 }

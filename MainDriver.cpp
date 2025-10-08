@@ -1,19 +1,13 @@
-#include "Stack.h"
-#include "ReverseStack.h"
 #include <iostream>
 #include <vector>
 #include <fstream>
 #include <string>
+#include "Stack.h"
+#include "ReverseStack.h"
+#include "StackUtils.h"
+
 
 using namespace std;
-
-/*
-    TWEAKS/BUGS
-    Currently only handles ints, should be able to handle any type
-    this will be created in main driver
-    Output reverses elements, but also adds first item last, as a traditional stack
-    this should display exactly like the output but in the reverse order
-*/
 
 int main(){
     //reading and outputing files
@@ -21,7 +15,6 @@ int main(){
     //ofstream outputFile;
 
     string inFilename, outFilename;
-    Stack<int> stack1;
     bool checkStack;
 
     //getting user input for input file name
@@ -35,17 +28,29 @@ int main(){
 
     //open input file
     ifstream inputFile(inFilename);
+    //ifstream inputFile("input.txt");
     if (!inputFile.is_open()){
         cout << "Error: Could not open input file " << inFilename << endl;
         return 1;
     }
 
     ofstream outputFile(outFilename);
+    //ofstream outputFile("output.txt");
     if (!outputFile.is_open()){
         cout << "Error: Could not open output file " << outFilename << endl;
         return 1;
     }
-    ReverseContent(inputFile, outputFile);
+
+    //checking if the contents were successfully reversed
+    checkStack = ReverseContent<char>(inputFile, outputFile);
+    if (checkStack == true){
+        cout << "Successfully reversed strings\n";
+    } else {
+        cout << "Could not reverse strings\n";
+    }
+
+    inputFile.close();
+    outputFile.close();
     /*cout << "Starting with empty stack, expected result is true(1): ";
     checkStack = stack1.IsEmpty();
     cout << checkStack << "\n";
