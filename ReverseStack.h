@@ -20,9 +20,6 @@ bool ReverseContent(std::ifstream& inputFile, std::ofstream& outputFile){
             outputFile.put('\n');
             continue;
         }
-        /*if (isspace(item)){
-            continue;
-        }*/
         stk.Push(item);
     }
     while (!stk.IsEmpty()){
